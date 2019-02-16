@@ -12,7 +12,7 @@
 
 void print_greeting()
 {
-    printf("Welcome to the Ancient Game of Nim");
+    printf("Welcome to the Ancient Game of Nim \n");
 }
 
 int user_wants_to_play_again()
@@ -20,7 +20,7 @@ int user_wants_to_play_again()
     char input;
     //checks if the user wants to play again if y then yes, n then no
     //prints the directions
-    printf("Do you want to play again? (y/n)");
+    printf("Do you want to play again? (y/n) \n");
     //scans the user input
     
     scanf("%c", &input);
@@ -28,8 +28,8 @@ int user_wants_to_play_again()
     
     while ( (input != 'y') || (input == 'Y') || (input == 'n') || (input == 'N'))
     {
-        printf("Bad input! Try again. ");
-        printf("Do you want to play again? (y/n)");
+        printf("Bad input! Try again. \n");
+        printf("Do you want to play again? (y/n) \n");
         scanf("%c", &input);
     }
     // if to see if player wants to play again returning 0 for no 1 for yes
@@ -56,10 +56,10 @@ int user_wants_to_play_again()
 void print_scoreboard(int playerwins, int compwins)
 {
     // prints the scoreboard
-    printf("* * * * * * * * * * * ");
-    printf("Current Score: ");
-    printf("Player 1 (Human): %d", playerwins );
-    printf("Player 2 (Computer): %d", compwins);
+    printf("* * * * * * * * * * * \n");
+    printf("Current Score: \n");
+    printf("Player 1 (Human): %d \n", playerwins );
+    printf("Player 2 (Computer): %d \n", compwins);
 }
 
 int get_computer_move(int heap_a, int heap_b, int heap_c)
@@ -73,17 +73,17 @@ int get_computer_move(int heap_a, int heap_b, int heap_c)
         if( heap_a > 0 )
         {
             heap_a = 1;
-            printf( "COMPUTER moves a1");
+            printf( "COMPUTER moves a1 \n");
         }
         else if ( heap_b > 0)
         {
             heap_b -= 1;
-            printf( "COMPUTER moves b1");
+            printf( "COMPUTER moves b1 \n");
         }
         else if ( heap_c > 0)
         {
             heap_c -= 1;
-            printf( "COMPUTER moves c1");
+            printf( "COMPUTER moves c1 \n");
         }
         
     }
@@ -92,17 +92,17 @@ int get_computer_move(int heap_a, int heap_b, int heap_c)
     if ( (heap_a ^ nimnumber) < heap_a )
     {
         heap_a -= (heap_a ^ nimnumber);
-        printf( "COMPUTER moves a%d", nimnumber );
+        printf( "COMPUTER moves a%d \n", nimnumber );
     }
     if ( (heap_b ^ nimnumber) < heap_b)
     {
         heap_b -= (heap_b ^ nimnumber);
-        printf( "COMPUTER moves b%d", nimnumber );
+        printf( "COMPUTER moves b%d \n", nimnumber );
     }
     if ((heap_c ^ nimnumber) < heap_c)
     {
         heap_c -= (heap_c ^ nimnumber);
-        printf( "COMPUTER moves c%d", nimnumber );
+        printf( "COMPUTER moves c%d \n", nimnumber );
     }
     
     return 0;
@@ -116,46 +116,46 @@ int play_nim(int winner, int comp_wins, int user_wins)
     int player_turn;
     char moveheap = '\0';
     int stones_removed = 0;
-    int player1 = 0;
+    int player1;
     int player2;
     
     if( winner == 1)
     {
-        player1 = 1;
+        player_turn = 2;
+    
     }
     if (winner == 2)
     {
-        player2 = 2;
-    }
-    
-    if( winner == player1 )
-    {
-        printf( "Player 1 goes first this time! ");
-    }
-    
-    if( winner == player1 )
-    {
-        printf( " Player 2 goes first this time! ");
-    }
-    
-    if( winner == player1 )
-    {
-        player_turn = 2;
-    }
-    else
-    {
         player_turn = 1;
     }
+    
+    printf("Player 1 is you (the human) \n");
+    printf("Player 2 is me (the computer) \n");
+    
+    if( player_turn == 1 )
+    {
+        printf( "Player 1 goes first this time! \n");
+        printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
+    }
+    
+    if( player_turn == 2 )
+    {
+        printf( "Player 2 goes first this time! \n");
+        printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
+    }
+    
     
     while((heap_a != 0 || heap_b !=0 || heap_c !=0))
     {
         if(player_turn == 1)
         {
+            
+            printf("Enter the letter of the heap and number of stones to remove: \n");
             scanf(" %c, %d", &moveheap, &stones_removed);
-            printf("Enter the letter of the heap and number of stones to remove: ");
             if ((moveheap == 'a' || moveheap == 'A') && heap_a - stones_removed >= 0)
             {
                 heap_a -= stones_removed;
+                printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
                 player_turn = 2;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
@@ -167,6 +167,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             else if ((moveheap == 'b' || moveheap == 'B') && heap_b - stones_removed >= 0)
             {
                 heap_b -= stones_removed;
+                printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
                 player_turn = 2;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
@@ -178,6 +179,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             }
             else if ((moveheap == 'c' || moveheap == 'C') && heap_c - stones_removed >= 0)
             {
+                printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
                 heap_c -= stones_removed;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
@@ -189,13 +191,14 @@ int play_nim(int winner, int comp_wins, int user_wins)
             
             else
             {
-                printf("\nIllegal move! Try again. ");
+                printf("Illegal move! Try again. \n");
                 player_turn = 1;
             }
         }
         else
         {
             get_computer_move(heap_a, heap_b, heap_c);
+            printf("\nPlayer %d \nHeaps: \nA: %d \nB: %d \nC: %d \n", player_turn, heap_a, heap_b, heap_c);
             if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
             {
                 
@@ -206,6 +209,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             player_turn = 1;
         }
     }
+    return -1;
 }
 
 
@@ -213,28 +217,17 @@ int main()
 {
     // main function that runs the program
     // initialize instance variables
-    int comp_wins = 0;
-    int user_wins = 0;
-    int againplay = 1;
     int winner;
-    int playagain;
+    bool playagain = true;
     
     
     print_greeting();
     
-    winner = play_nim(1, 0, 0);
+    winner = play_nim(2, 0, 0);
     
-    while( againplay != 0)
+    while( playagain)
     {
         playagain = user_wants_to_play_again();
-        if (playagain == 1)
-        {
-            play_nim(winner, comp_wins, user_wins);
-        }
-        if (playagain == 0)
-        {
-            againplay = 0;
-        }
     }
     
     
