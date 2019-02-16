@@ -114,12 +114,21 @@ int play_nim(int winner, int comp_wins, int user_wins)
     int heap_b = 4;
     int heap_c =3;
     int player_turn;
-    char moveheap;
-    int stones_removed;
-    int player1;
+    char moveheap = '\0';
+    int stones_removed = 0;
+    int player1 = 0;
     int player2;
     
-    if( winner == player2 )
+    if( (winner = 1))
+    {
+        player1 = 1;
+    }
+    if ((winner = 2))
+    {
+        player2 =2;
+    }
+    
+    if( winner == player1 )
     {
         printf( "Player 1 goes first this time! ");
     }
@@ -140,7 +149,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
     
     while((heap_a != 0 || heap_b !=0 || heap_c !=0))
     {
-        if(player_turn = 1)
+        if((player_turn = 1))
         {
             scanf(" %c, %d", moveheap, stones_removed);
             printf("Enter the letter of the heap and number of stones to remove: ");
@@ -230,11 +239,11 @@ int main()
     while( againplay != 0)
     {
         playagain = user_wants_to_play_again();
-        if (playagain = 1)
+        if ((playagain = 1))
         {
             play_nim(winner, comp_wins, user_wins);
         }
-        if (playagain = 0 )
+        if ((playagain = 0))
         {
             againplay = 0;
         }
