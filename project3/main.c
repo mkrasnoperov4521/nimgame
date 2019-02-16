@@ -53,7 +53,7 @@ int user_wants_to_play_again()
     
 }
 
-void print_scoreboard(playerwins, compwins)
+void print_scoreboard(int playerwins, int compwins)
 {
     // prints the scoreboard
     printf("* * * * * * * * * * * ");
@@ -62,7 +62,7 @@ void print_scoreboard(playerwins, compwins)
     printf("Player 2 (Computer): %d", compwins);
 }
 
-int get_computer_move(heap_a, heap_b, heap_c)
+int get_computer_move(int heap_a, int heap_b, int heap_c)
 {
     int nimnumber;
     nimnumber = heap_a ^ heap_b ^ heap_c;
@@ -108,11 +108,8 @@ int get_computer_move(heap_a, heap_b, heap_c)
     return 0;
 }
 
-int play_nim(winner, comp_wins, user_wins)
+int play_nim(int winner, int comp_wins, int user_wins)
 {
-    int winner;
-    int comp_wins;
-    int user_wins;
     int heap_a = 5;
     int heap_b = 4;
     int heap_c =3;
@@ -122,17 +119,17 @@ int play_nim(winner, comp_wins, user_wins)
     int player1;
     int player2;
     
-    if( winner = player2 )
+    if( winner == player2 )
     {
         printf( "Player 1 goes first this time! ");
     }
     
-    if( winner = player1 )
+    if( winner == player1 )
     {
         printf( " Player 2 goes first this time! ");
     }
     
-    if( winner = player1 )
+    if( winner == player1 )
     {
         player_turn = 2;
     }
@@ -199,7 +196,7 @@ int play_nim(winner, comp_wins, user_wins)
             player_turn = 1;
         }
         
-        if(winner = player1)
+        if(winner == player1)
         {
             return 2;
         }
