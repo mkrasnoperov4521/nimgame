@@ -119,11 +119,11 @@ int play_nim(int winner, int comp_wins, int user_wins)
     int player1 = 0;
     int player2;
     
-    if( (winner = 1))
+    if( winner == 1)
     {
         player1 = 1;
     }
-    if ((winner = 2))
+    if (winner == 2)
     {
         player2 = 2;
     }
@@ -149,7 +149,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
     
     while((heap_a != 0 || heap_b !=0 || heap_c !=0))
     {
-        if((player_turn = 1))
+        if(player_turn == 1)
         {
             scanf(" %c, %d", moveheap, stones_removed);
             printf("Enter the letter of the heap and number of stones to remove: ");
@@ -159,9 +159,9 @@ int play_nim(int winner, int comp_wins, int user_wins)
                 player_turn = 2;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
-                    return 1;
                     user_wins += 1;
-                    break;
+                    print_scoreboard(comp_wins, user_wins);
+                    return 1;
                 }
             }
             else if ((moveheap == 'b' || moveheap == 'B') && heap_b - stones_removed >= 0)
@@ -170,9 +170,10 @@ int play_nim(int winner, int comp_wins, int user_wins)
                 player_turn = 2;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
-                    return 1;
+                    
                     user_wins += 1;
-                    break;
+                    print_scoreboard(comp_wins, user_wins);
+                    return 1;
                 }
             }
             else if ((moveheap == 'c' || moveheap == 'C') && heap_c - stones_removed >= 0)
@@ -180,10 +181,9 @@ int play_nim(int winner, int comp_wins, int user_wins)
                 heap_c -= stones_removed;
                 if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
-                    return 1;
                     user_wins += 1;
-                    break;
-                }
+                    print_scoreboard(comp_wins, user_wins);
+                    return 1;                }
                 player_turn = 2;
             }
             
@@ -198,26 +198,15 @@ int play_nim(int winner, int comp_wins, int user_wins)
             get_computer_move(heap_a, heap_b, heap_c);
             if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
             {
+                
+                comp_wins +=1;
+                print_scoreboard(comp_wins, user_wins);
                 return 2;
-                comp_wins += 1;;
-                break;
             }
             player_turn = 1;
         }
         
-        if(winner == player1)
-        {
-            return 2;
-        }
-        else
-        {
-            return 1;
-        }
-        
-        
-        print_scoreboard(comp_wins, user_wins);
-        
-    }
+  
 }
 
 
@@ -239,11 +228,11 @@ int main()
     while( againplay != 0)
     {
         playagain = user_wants_to_play_again();
-        if ((playagain = 1))
+        if ((playagain == 1))
         {
             play_nim(winner, comp_wins, user_wins);
         }
-        if ((playagain = 0))
+        if ((playagain == 0))
         {
             againplay = 0;
         }
