@@ -151,7 +151,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
     {
         if(player_turn == 1)
         {
-            scanf(" %c, %d", moveheap, stones_removed);
+            scanf(" %c, %d", &moveheap, &stones_removed);
             printf("Enter the letter of the heap and number of stones to remove: ");
             if ((moveheap == 'a' || moveheap == 'A') && heap_a - stones_removed >= 0)
             {
