@@ -110,6 +110,9 @@ int get_computer_move(heap_a, heap_b, heap_c)
 
 int play_nim(winner, comp_wins, user_wins)
 {
+    int winner;
+    int comp_wins;
+    int user_wins;
     int heap_a = 5;
     int heap_b = 4;
     int heap_c =3;
