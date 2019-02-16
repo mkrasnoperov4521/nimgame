@@ -125,7 +125,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
     }
     if ((winner = 2))
     {
-        player2 =2;
+        player2 = 2;
     }
     
     if( winner == player1 )
@@ -157,7 +157,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             {
                 heap_a -= stones_removed;
                 player_turn = 2;
-                if( (heap_a = 0) && (heap_b =0) && (heap_c = 0))
+                if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
                     return 1;
                     user_wins += 1;
@@ -168,7 +168,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             {
                 heap_b -= stones_removed;
                 player_turn = 2;
-                if( (heap_a = 0) && (heap_b =0) && (heap_c = 0))
+                if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
                     return 1;
                     user_wins += 1;
@@ -178,7 +178,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             else if ((moveheap == 'c' || moveheap == 'C') && heap_c - stones_removed >= 0)
             {
                 heap_c -= stones_removed;
-                if( (heap_a = 0) && (heap_b =0) && (heap_c = 0))
+                if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
                 {
                     return 1;
                     user_wins += 1;
@@ -196,7 +196,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
         else
         {
             get_computer_move(heap_a, heap_b, heap_c);
-            if( (heap_a = 0) && (heap_b =0) && (heap_c = 0))
+            if( (heap_a == 0) && (heap_b == 0) && (heap_c == 0))
             {
                 return 2;
                 comp_wins += 1;;
