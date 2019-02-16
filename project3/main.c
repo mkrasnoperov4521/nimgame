@@ -205,8 +205,7 @@ int play_nim(int winner, int comp_wins, int user_wins)
             }
             player_turn = 1;
         }
-        
-  
+    }
 }
 
 
@@ -228,11 +227,11 @@ int main()
     while( againplay != 0)
     {
         playagain = user_wants_to_play_again();
-        if ((playagain == 1))
+        if (playagain == 1)
         {
             play_nim(winner, comp_wins, user_wins);
         }
-        if ((playagain == 0))
+        if (playagain == 0)
         {
             againplay = 0;
         }
